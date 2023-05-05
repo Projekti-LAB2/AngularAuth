@@ -1,12 +1,18 @@
 <div class="form-div">
-    <form class="form">
-        <mat-form-field apperance="outline">
+    <div class="form" [formGroup]="formGroup">
+        <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
-            <input type="email" matInput>
+            <input matInput type="email" placeholder="Email" formControlName="email">
+            <mat-error *ngIf="hasError('email', 'required')">Email should not be empty</mat-error>
+            <mat-error *ngIf="hasError('email', 'valid')">Email should be valid</mat-error>
         </mat-form-field>
-        <mat-form-field apperance="outline">
+        <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
-            <input type="password" matInput>
+            <input matInput type="password" placeholder="Password" formControlName="password">
+            <mat-error *ngIf="hasError('password', 'required')">Password should not be empty</mat-error>
         </mat-form-field>
-    </form>
+        <div class="button-div">
+            <button mat-raised-button>LogIn</button>
+        </div>
+    </div>
 </div>

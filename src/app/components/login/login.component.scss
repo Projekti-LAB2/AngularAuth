@@ -16,4 +16,12 @@
 .button-div {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    margin-top: 20px;
+}
+.button-div button {
+    margin-top: 10px;
+}
+#button1:hover {
+    background-color: antiquewhite;
 }

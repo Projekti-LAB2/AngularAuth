@@ -1,10 +1,14 @@
 <div class="form-div">
     <div class="form" [formGroup]="formGroup">
         <mat-form-field appearance="outline">
-            <mat-label>Email</mat-label>
+            <!-- <mat-label>Email</mat-label>
             <input matInput type="email" placeholder="Email" formControlName="email">
             <mat-error *ngIf="hasError('email', 'required')">Email should not be empty</mat-error>
-            <mat-error *ngIf="hasError('email', 'email')">Email should be valid</mat-error>
+            <mat-error *ngIf="hasError('email', 'email')">Email should be valid</mat-error> -->
+            <mat-label>Username</mat-label>
+            <input matInput type="text" placeholder="User Name" formControlName="username">
+            <mat-error *ngIf="hasError('username', 'required')">Email should not be empty</mat-error>
+            <!-- <mat-error *ngIf="hasError('email', 'email')">Email should be valid</mat-error> -->
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
@@ -13,7 +17,7 @@
             <mat-error *ngIf="hasError('password', 'minlength')">Password should have at least 6 characters</mat-error>
         </mat-form-field>
         <div class="button-div">
-            <button mat-raised-button id="button1">LogIn</button>
+            <button mat-raised-button id="button1" (click)="onLogin()">LogIn</button>
             <button mat-button (click)="signUp()">SignUp</button>
         </div>
     </div>

@@ -1,1 +1,34 @@
-<p>edit-user works!</p>
+<div class="form-div">
+    <div class="form" [formGroup]="formGroup">
+        <mat-form-field appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input matInput type="text" placeholder="First name" formControlName="FirstName">
+            <mat-error *ngIf="hasError('FirstName', 'required')">First Name should not be empty</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input matInput type="text" placeholder="Last name" formControlName="LastName">
+            <mat-error *ngIf="hasError('LastName', 'required')">Last Name should not be empty</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" placeholder="Email" formControlName="Email">
+            <mat-error *ngIf="hasError('Email', 'required')">Email should not be empty</mat-error>
+            <mat-error *ngIf="hasError('Email', 'email')">Email should be valid</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>User Name</mat-label>
+            <input matInput type="text" placeholder="User name" formControlName="UserName">
+            <mat-error *ngIf="hasError('UserName', 'required')">User Name should not be empty</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Role</mat-label>
+            <input matInput type="role" placeholder="Role" formControlName="Role">
+            <mat-error *ngIf="hasError('Role', 'required')">Role should not be empty</mat-error>
+        </mat-form-field>
+        <div class="button-div">
+            <button mat-raised-button id="button1" (click)="sendData(formGroup)">Send</button>
+            <button mat-button (click)="cancel()">Cancel</button>
+        </div>
+    </div>
+</div>

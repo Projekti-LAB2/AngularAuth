@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { User } from 'src/app/models/user';
 
 @Component({
@@ -11,37 +11,45 @@ import { User } from 'src/app/models/user';
 export class EditUserComponent implements OnInit {
 
   formGroup = new FormGroup({
-    firstName: new FormControl(``,[Validators.required, Validators.minLength(1)]),
-    lastName: new FormControl(``,[Validators.required, Validators.minLength(1)]),
-    email: new FormControl(``, [Validators.required, Validators.email]),
-    userName: new FormControl(``,[Validators.required, Validators.minLength(1)]),
-    role: new FormControl(``,[Validators.required]),
+    FirstName: new FormControl(``,[Validators.required, Validators.minLength(1)]),
+    LastName: new FormControl(``,[Validators.required, Validators.minLength(1)]),
+    Email: new FormControl(``, [Validators.required, Validators.email]),
+    UserName: new FormControl(``,[Validators.required, Validators.minLength(1)]),
+    Role: new FormControl(``,[Validators.required]),
   })
 
   constructor(
     public dialogRef: MatDialogRef<EditUserComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: User,
+    @Inject(MAT_DIALOG_DATA) public data: {user: User},
   ) {}
   ngOnInit(): void {
-    console.log(this.data,'data');
-    
+    this.formGroup.patchValue({
+      FirstName: this.data.user.firstName,
+      LastName: this.data.user.lastName,
+      Email: this.data.user.email,
+      UserName: this.data.user.userName,
+      Role: this.data.user.role,
+    })
+  }
+  sendData(data:FormGroup) {
+    this.dialogRef.close(data.value);
   }
 
-  onNoClick(): void {
+  cancel(): void {
     this.dialogRef.close();
   }
 
   hasError(formControlName:string, error:string) {
-    if(formControlName === 'email'){
-      return this.formGroup.controls['email'].hasError(error);
-    }else if(formControlName === 'role'){
-      return this.formGroup.controls['role'].hasError(error);
-    }else if(formControlName === 'firstName'){
-      return this.formGroup.controls['firstName'].hasError(error);
+    if(formControlName === 'Email'){
+      return this.formGroup.controls['Email'].hasError(error);
+    }else if(formControlName === 'Role'){
+      return this.formGroup.controls['Role'].hasError(error);
+    }else if(formControlName === 'FirstName'){
+      return this.formGroup.controls['FirstName'].hasError(error);
     }else if(formControlName === 'lastName'){
-      return this.formGroup.controls['lastName'].hasError(error);
-    }else if(formControlName === 'userName'){
-      return this.formGroup.controls['userName'].hasError(error);
+      return this.formGroup.controls['LastName'].hasError(error);
+    }else if(formControlName === 'UserName'){
+      return this.formGroup.controls['UserName'].hasError(error);
     }
     return false;
   }

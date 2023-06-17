@@ -1,31 +1,41 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { User } from 'src/app/models/user';
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss']
+  selector: 'app-edit-user',
+  templateUrl: './edit-user.component.html',
+  styleUrls: ['./edit-user.component.css']
 })
-export class SignupComponent implements OnInit {
+export class EditUserComponent implements OnInit {
 
   formGroup = new FormGroup({
     firstName: new FormControl(``,[Validators.required, Validators.minLength(1)]),
     lastName: new FormControl(``,[Validators.required, Validators.minLength(1)]),
     email: new FormControl(``, [Validators.required, Validators.email]),
     userName: new FormControl(``,[Validators.required, Validators.minLength(1)]),
-    password: new FormControl(``, [Validators.required, Validators.minLength(6)])
+    role: new FormControl(``,[Validators.required]),
   })
-  constructor(private router: Router, private authService: AuthService) { }
 
+  constructor(
+    public dialogRef: MatDialogRef<EditUserComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: User,
+  ) {}
   ngOnInit(): void {
+    console.log(this.data,'data');
+    
   }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
   hasError(formControlName:string, error:string) {
     if(formControlName === 'email'){
       return this.formGroup.controls['email'].hasError(error);
-    }else if(formControlName === 'password'){
-      return this.formGroup.controls['password'].hasError(error);
+    }else if(formControlName === 'role'){
+      return this.formGroup.controls['role'].hasError(error);
     }else if(formControlName === 'firstName'){
       return this.formGroup.controls['firstName'].hasError(error);
     }else if(formControlName === 'lastName'){
@@ -34,22 +44,5 @@ export class SignupComponent implements OnInit {
       return this.formGroup.controls['userName'].hasError(error);
     }
     return false;
-  }
-  logIn() {
-    this.router.navigate(['./login'])
-  }
-  signUp() {
-    if(this.formGroup.valid){
-      console.log(this.formGroup.value);
-
-      this.authService.signUp(this.formGroup.value).subscribe(res => {
-        alert(res.message);
-        this.formGroup.reset();
-        this.router.navigate(['./login']);
-      },(err) => {
-        alert(err.error.message);
-      })
-      
-    }
   }
 }

@@ -5,17 +5,30 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
-import {  MatButtonModule, MatIconModule, MatInputModule } from '@angular/material';
+import {  MatButtonModule, MatDialog, MatDialogModule, MatIconModule, MatInputModule } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { TokenInterceptor } from './interceptors/token.interceptor';
+import { TicketsComponent } from './components/tickets/tickets.component';
+import { CitiesComponent } from './components/cities/cities.component';
+import { OffersComponent } from './components/offers/offers.component';
+import { UsersComponent } from './components/users/users.component';
+import { EditUserComponent } from './components/users/edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    DashboardComponent,
+    TicketsComponent,
+    CitiesComponent,
+    OffersComponent,
+    UsersComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,
@@ -27,9 +40,14 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     MatIconModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent],
   // schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

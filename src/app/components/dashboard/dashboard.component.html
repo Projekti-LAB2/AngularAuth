@@ -1,0 +1,49 @@
+<!-- <div class="navbar">
+    <div class="user-icon">
+      <img src="../../../assets/logobuses.png" alt="User Icon">
+    </div>
+    <a class="logout" (click)="logout()">Logout</a>
+</div>
+<div class="sidenav">
+    <a href="#">Dashboard</a>
+    <a href="#">Profile</a>
+    <a href="#">Settings</a>
+  </div>
+  
+  <div class="content">
+  </div> -->
+<!-- app.component.html -->
+<div class="app-container">
+    <div class="sidebar"  [ngClass]="{'open': isSideMenuOpen, 'closed': !isSideMenuOpen}">
+        <div class="toggle-button" (click)="toggleSideMenu()">
+            <i class="arrow-icon" [ngClass]="{'open': isSideMenuOpen, 'closed': !isSideMenuOpen}"></i>
+        </div>
+        <div class="logo">
+            <img src="../../../assets/logobuses.png" alt="Logo">
+        </div>
+        <ul class="menu" [ngClass]="{'open': isSideMenuOpen, 'closed': !isSideMenuOpen}">
+            <li class="menu-item"
+            routerLink="/dashboard/tickets" routerLinkActive="active">Tickets</li>
+            <li class="menu-item"
+            routerLink="/dashboard/cities" routerLinkActive="active">Cities</li>
+            <li class="menu-item"
+            routerLink="/dashboard/offers" routerLinkActive="active">Offers</li>
+            <li class="menu-item"
+            routerLink="/dashboard/users" routerLinkActive="active">Users</li>
+        </ul>
+    </div>
+    <div class="content">
+        <!-- Your main content here -->
+        <div class="header-div">
+            <h1>Dashboard</h1>
+            <div class="logout">
+                <button class="logout-button" (click)="logout()">Logout</button>
+            </div>
+        </div>
+        <div class="data-div">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+
+<!-- </div> -->

@@ -1,4 +1,4 @@
 export interface StartPoint {
-  startPointId: number | null;
-  deparatureCityName: string;
+  StartPointId: number | null;
+  DeparatureCityName: string;
 }

@@ -2,22 +2,16 @@ import { City } from "./City";
 import { StartPoint } from "./startPoint";
 
     export interface Ticket {
-        ticketId: number;
-        ticketNumber: string;
-        price: number;
-        startPointId: number;
-        startPoint: StartPoint;
-        cityId: number;
-        city: City;
-        time: string;
-        date: string;
+        TicketId: number;
+        TicketNumber: string;
+        Price: number;
+        StartPointId: number;
+        StartPoint: StartPoint;
+        CityId: number;
+        City: City;
+        Time: string;
+        Date: string;
       }
       
-      // export interface StartPoint {
-      //   // Define properties for StartPoint if applicable
-      // }
-      
-      // export interface City {
-      //   // Define properties for City if applicable
-      // }
+   
       

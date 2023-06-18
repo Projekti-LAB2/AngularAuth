@@ -1,0 +1,31 @@
+.button-style {
+    background-color: #2f92fb;
+    color: #fff;
+    font-size: 10pt;
+}
+.button-style-delete {
+    background-color: #ff5d5d;
+    color: #fff;
+    font-size: 10pt;
+}
+.mat-mdc-button:not(:disabled) {
+    color: white;
+}
+mat-card {
+    display: flex;
+    padding: 10px;
+    background-color: rgb(199 199 199 / 20%);
+    margin: 5px;
+}
+.add-button-div {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.add-button-div button {
+    background-color: #2f92fb;
+    color: #fff;
+    font-size: 10pt;
+}

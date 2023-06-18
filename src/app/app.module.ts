@@ -76,13 +76,14 @@ import { CitiesComponent } from './components/cities/cities.component';
 import { OffersComponent } from './components/offers/offers.component';
 import { UsersComponent } from './components/users/users.component';
 import { EditUserComponent } from './components/users/edit-user/edit-user.component';
-import { MatButtonModule } from '@angular/material/button';
+import { MatButtonModule, MatIconButton } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { CreateTicketComponent } from './components/tickets/create-ticket/create-ticket.component';
-
+import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
 @NgModule({
   declarations: [
     AppComponent,
@@ -107,7 +108,10 @@ import { CreateTicketComponent } from './components/tickets/create-ticket/create
     MatIconModule,
     MatButtonModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTableModule,
+    MatSelectModule,
+    MatCardModule
   ],
   providers: [
     {

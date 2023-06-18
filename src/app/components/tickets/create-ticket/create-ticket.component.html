@@ -12,22 +12,32 @@
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Start Point</mat-label>
-            <input matInput type="Start Point" placeholder="Start Point" formControlName="StartPointId">
+            <mat-select formControlName="StartPointId" placeholder="Start Point">
+              <mat-option *ngFor="let startPoint of startPoints" [value]="startPoint.StartPointId">
+                {{ startPoint.DeparatureCityName }}
+              </mat-option>
+            </mat-select>
             <mat-error *ngIf="hasError('StartPointId', 'required')">Start Point should not be empty</mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="outline">
+          </mat-form-field>
+          
+          <mat-form-field appearance="outline">
             <mat-label>City</mat-label>
-            <input matInput type="text" placeholder="City" formControlName="CityId">
+            <mat-select formControlName="CityId" placeholder="City">
+              <mat-option *ngFor="let city of cities" [value]="city.CityId">
+                {{ city.CityName }}
+              </mat-option>
+            </mat-select>
             <mat-error *ngIf="hasError('CityId', 'required')">City should not be empty</mat-error>
-        </mat-form-field>
+          </mat-form-field>
+          
         <mat-form-field appearance="outline">
             <mat-label>Time</mat-label>
-            <input matInput type="Time" placeholder="Time" formControlName="Time">
+            <input matInput type="Time" formControlName="Time">
             <mat-error *ngIf="hasError('Time', 'required')">Time should not be empty</mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Date</mat-label>
-            <input matInput type="Date" placeholder="Date" formControlName="Date">
+            <input matInput type="Date"  formControlName="Date">
             <mat-error *ngIf="hasError('Date', 'required')">Date should not be empty</mat-error>
         </mat-form-field>
         <div class="button-div">

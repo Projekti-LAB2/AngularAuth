@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { StartPoint } from '../models/startPoint';
 // import { StartPoint } from '../models/ticket';
 
 @Injectable({

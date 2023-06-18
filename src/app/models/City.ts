@@ -1,8 +1,8 @@
 import { Ticket } from "./ticket";
 
 export interface City {
-    cityId: number;
-    cityName: string;
+    CityId: number;
+    CityName: string;
     // tickets: Ticket[];
     offers: Offer[];
   }

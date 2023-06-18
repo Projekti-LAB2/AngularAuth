@@ -1,0 +1,38 @@
+<div class="form-div">
+    <div class="form" [formGroup]="formGroup">
+        <mat-form-field appearance="outline">
+            <mat-label>Ticket Number</mat-label>
+            <input matInput type="text" placeholder="Ticket Number" formControlName="TicketNumber">
+            <mat-error *ngIf="hasError('TicketNumber', 'required')">First Name should not be empty</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Price</mat-label>
+            <input matInput type="text" placeholder="Price" formControlName="Price">
+            <mat-error *ngIf="hasError('Price', 'required')">Price should not be empty</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Start Point</mat-label>
+            <input matInput type="Start Point" placeholder="Start Point" formControlName="StartPointId">
+            <mat-error *ngIf="hasError('StartPointId', 'required')">Start Point should not be empty</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>City</mat-label>
+            <input matInput type="text" placeholder="City" formControlName="CityId">
+            <mat-error *ngIf="hasError('CityId', 'required')">City should not be empty</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Time</mat-label>
+            <input matInput type="Time" placeholder="Time" formControlName="Time">
+            <mat-error *ngIf="hasError('Time', 'required')">Time should not be empty</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Date</mat-label>
+            <input matInput type="Date" placeholder="Date" formControlName="Date">
+            <mat-error *ngIf="hasError('Date', 'required')">Date should not be empty</mat-error>
+        </mat-form-field>
+        <div class="button-div">
+            <button mat-raised-button id="button1" (click)="sendData(formGroup)">Send</button>
+            <button mat-button (click)="cancel()">Cancel</button>
+        </div>
+    </div>
+</div>

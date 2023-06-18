@@ -81,6 +81,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
+import { CreateTicketComponent } from './components/tickets/create-ticket/create-ticket.component';
 
 @NgModule({
   declarations: [
@@ -92,7 +93,8 @@ import { MatIconModule } from '@angular/material/icon';
     CitiesComponent,
     OffersComponent,
     UsersComponent,
-    EditUserComponent
+    EditUserComponent,
+    CreateTicketComponent
   ],
   imports: [
     BrowserModule,

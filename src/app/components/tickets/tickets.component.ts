@@ -72,5 +72,9 @@ export class TicketsComponent implements OnInit {
       });
     })
   }
+  getStartPoint(id:number | null) {
+    return id !== null ? this.startPoints.find(item => 
+      item.StartPointId?.toString() === id.toString())?.DeparatureCityName : '';
+  }
 }
  

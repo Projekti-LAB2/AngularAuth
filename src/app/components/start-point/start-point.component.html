@@ -1,0 +1,32 @@
+<div class="table-div">
+    <mat-card>
+      <div class="add-button-div">
+        <input matInput type="text" placeholder="Search" [(ngModel)]="searchText" (keyup)="filterCities()">
+        <button mat-raised-button color="primary" (click)="AddStartPoint()">Add StartPoint</button>
+      </div>
+      <table mat-table [dataSource]="startPoints" matSort>
+        <ng-container matColumnDef="StartPointId">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header (click)="sort('StartPointId')">startPoint Id</th>
+          <td mat-cell *matCellDef="let item">{{ item.StartPointId }}</td>
+        </ng-container>
+        <ng-container matColumnDef="DeparatureCityName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header (click)="sort('DeparatureCityName')">Deparature City Name</th>
+          <td mat-cell *matCellDef="let item">{{ item.DeparatureCityName }}</td>
+        </ng-container>
+        <ng-container matColumnDef="edit">
+          <th mat-header-cell *matHeaderCellDef>Edit</th>
+          <td mat-cell  *matCellDef="let item">
+            <button mat-button (click)="editStartPoint(item)" class="button-style">Edit</button></td>
+        </ng-container>
+        <ng-container matColumnDef="delete">
+          <th mat-header-cell *matHeaderCellDef>Delete</th>
+          <td mat-cell *matCellDef="let item">
+            <button (click)="deleteStartPoint(item.StartPointId)" mat-button class="button-style-delete" >Delete</button></td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </mat-card>
+    
+</div>

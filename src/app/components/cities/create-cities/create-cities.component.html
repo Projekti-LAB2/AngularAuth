@@ -1,0 +1,14 @@
+<div class="form-div">
+    <div class="form" [formGroup]="formGroup">
+        <mat-form-field appearance="outline">
+            <mat-label>City Name</mat-label>
+            <input matInput type="text" placeholder="City Name" formControlName="CityName">
+            <mat-error *ngIf="hasError('CityName', 'required')">City Name should not be empty</mat-error>
+        </mat-form-field>
+        
+        <div class="button-div">
+            <button mat-raised-button id="button1" (click)="sendData(formGroup)">Send</button>
+            <button mat-button (click)="cancel()">Cancel</button>
+        </div>
+    </div>
+</div>

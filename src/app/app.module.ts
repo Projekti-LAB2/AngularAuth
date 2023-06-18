@@ -84,6 +84,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { CreateTicketComponent } from './components/tickets/create-ticket/create-ticket.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
+import { CreateCitiesComponent } from './components/cities/create-cities/create-cities.component';
+import { StartPointComponent } from './components/start-point/start-point.component';
+import { CreateStartPointComponent } from './components/start-point/create-start-point/create-start-point.component';
+import { MatSortModule } from '@angular/material/sort';
 @NgModule({
   declarations: [
     AppComponent,
@@ -95,7 +99,10 @@ import { MatCardModule } from '@angular/material/card';
     OffersComponent,
     UsersComponent,
     EditUserComponent,
-    CreateTicketComponent
+    CreateTicketComponent,
+    CreateCitiesComponent,
+    StartPointComponent,
+    CreateStartPointComponent
   ],
   imports: [
     BrowserModule,
@@ -111,7 +118,8 @@ import { MatCardModule } from '@angular/material/card';
     MatDialogModule,
     MatTableModule,
     MatSelectModule,
-    MatCardModule
+    MatCardModule,
+    MatSortModule
   ],
   providers: [
     {

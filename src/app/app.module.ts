@@ -88,6 +88,8 @@ import { CreateCitiesComponent } from './components/cities/create-cities/create-
 import { StartPointComponent } from './components/start-point/start-point.component';
 import { CreateStartPointComponent } from './components/start-point/create-start-point/create-start-point.component';
 import { MatSortModule } from '@angular/material/sort';
+import { OfferComponent } from './components/offer/offer.component';
+import { CreateOfferComponent } from './components/offer/create-offer/create-offer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -102,7 +104,9 @@ import { MatSortModule } from '@angular/material/sort';
     CreateTicketComponent,
     CreateCitiesComponent,
     StartPointComponent,
-    CreateStartPointComponent
+    CreateStartPointComponent,
+    OfferComponent,
+    CreateOfferComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,36 @@
+<div class="form-div">
+    <div class="form" [formGroup]="formGroup">
+        <mat-form-field appearance="outline">
+            <mat-label>Offer Name</mat-label>
+            <input matInput type="text" placeholder="Offer Name" formControlName="OfferName">
+            <mat-error *ngIf="hasError('OfferName', 'required')">Offer Name should not be empty</mat-error>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+            <mat-label>Price</mat-label>
+            <input matInput type="text" placeholder="Price" formControlName="Price">
+            <mat-error *ngIf="hasError('Price', 'required')">Price should not be empty</mat-error>
+        </mat-form-field>
+          
+          <mat-form-field appearance="outline">
+            <mat-label>City</mat-label>
+            <mat-select formControlName="CityId" placeholder="City">
+              <mat-option *ngFor="let city of cities" [value]="city.CityId">
+                {{ city.CityName }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="hasError('CityId', 'required')">City should not be empty</mat-error>
+          </mat-form-field>
+          
+        <mat-form-field appearance="outline">
+            <mat-label>OfferDescription</mat-label>
+            <input matInput type="text" formControlName="OfferDescription">
+            <mat-error *ngIf="hasError('OfferDescription', 'required')">Offer Description should not be empty</mat-error>
+        </mat-form-field>
+
+        <div class="button-div">
+            <button mat-raised-button id="button1" (click)="sendData(formGroup)">Send</button>
+            <button mat-button (click)="cancel()">Cancel</button>
+        </div>
+    </div>
+</div>

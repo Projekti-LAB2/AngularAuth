@@ -1,0 +1,51 @@
+<div class="table-div">
+    <mat-card>
+      <div class="add-button-div">
+        <div class="filter-bar-div">
+          <input matInput type="text" placeholder="Search" [(ngModel)]="searchText" (keyup)="filterCities()">
+          <mat-select placeholder="Select column to filter by">
+            <mat-option *ngFor="let option of options" [value]="option" (click)="changeValue(option)">
+              {{ option }}
+            </mat-option>
+          </mat-select>
+        </div>
+        <button mat-raised-button color="primary" (click)="AddTicket()">Add Ticket</button>
+      </div>
+      <table mat-table [dataSource]="offers" matSort> 
+        <ng-container matColumnDef="OfferId">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header (click)="sort('OfferId')">Offer Id</th>
+          <td mat-cell *matCellDef="let item">{{ item.OfferId }}</td>
+        </ng-container>
+        <ng-container matColumnDef="OfferName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header (click)="sort('OfferName')">Offer Name</th>
+          <td mat-cell *matCellDef="let item">{{ item.OfferName }}</td>
+        </ng-container>
+        <ng-container matColumnDef="City">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header (click)="sort('City')">City</th>
+          <td mat-cell *matCellDef="let item">{{ item.City?.CityName }}</td>
+        </ng-container>
+        <ng-container matColumnDef="OfferDescription">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header (click)="sort('OfferDescription')">Offer Description</th>
+          <td mat-cell *matCellDef="let item">{{item?.OfferDescription}}</td>
+        </ng-container>
+        <ng-container matColumnDef="Price">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header (click)="sort('Price')">Price</th>
+          <td mat-cell *matCellDef="let item">{{ item.Price }}</td>
+        </ng-container>
+        <ng-container matColumnDef="edit">
+          <th mat-header-cell *matHeaderCellDef >Edit</th>
+          <td mat-cell  *matCellDef="let item">
+            <button mat-button (click)="editTicket(item)" class="button-style">Edit</button></td>
+        </ng-container>
+        <ng-container matColumnDef="delete">
+          <th mat-header-cell *matHeaderCellDef>Delete</th>
+          <td mat-cell *matCellDef="let item">
+            <button (click)="deleteTicket(item.TicketId)" mat-button class="button-style-delete" >Delete</button></td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </mat-card>
+    
+</div>

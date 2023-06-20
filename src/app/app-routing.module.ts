@@ -9,6 +9,7 @@ import { OffersComponent } from './components/offers/offers.component';
 import { CitiesComponent } from './components/cities/cities.component';
 import { UsersComponent } from './components/users/users.component';
 import { StartPointComponent } from './components/start-point/start-point.component';
+import { OfferComponent } from './components/offer/offer.component';
 const routes: Routes = [
   {
     path:'', redirectTo: 'login', pathMatch:'full'
@@ -27,8 +28,8 @@ const routes: Routes = [
         component: TicketsComponent
       },
       {
-        path: 'offers',
-        component: OffersComponent
+        path: 'offer',
+        component: OfferComponent
       },
       {
         path: 'cities',

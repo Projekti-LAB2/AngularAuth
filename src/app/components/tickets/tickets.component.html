@@ -1,39 +1,47 @@
 <div class="table-div">
     <mat-card>
       <div class="add-button-div">
+        <div>
+          <input matInput type="text" placeholder="Search" [(ngModel)]="searchText" (keyup)="filterCities()">
+          <mat-select placeholder="Select column to filter by">
+            <mat-option *ngFor="let option of options" [value]="option" (click)="changeValue(option)">
+              {{ option }}
+            </mat-option>
+          </mat-select>
+        </div>
         <button mat-raised-button color="primary" (click)="AddTicket()">Add Ticket</button>
       </div>
-      <table mat-table [dataSource]="tickets">
+      <table mat-table [dataSource]="tickets" matSort> 
         <ng-container matColumnDef="TicketId">
-          <th mat-header-cell *matHeaderCellDef>Ticket Id</th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header (click)="sort('TicketId')">Ticket Id</th>
           <td mat-cell *matCellDef="let item">{{ item.TicketId }}</td>
         </ng-container>
         <ng-container matColumnDef="TicketNumber">
-          <th mat-header-cell *matHeaderCellDef>Ticket Number</th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header (click)="sort('TicketNumber')">Ticket Number</th>
           <td mat-cell *matCellDef="let item">{{ item.TicketNumber }}</td>
         </ng-container>
         <ng-container matColumnDef="Price">
-          <th mat-header-cell *matHeaderCellDef>Price</th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header (click)="sort('Price')">Price</th>
           <td mat-cell *matCellDef="let item">{{ item.Price }}</td>
         </ng-container>
         <ng-container matColumnDef="StartPoint">
-          <th mat-header-cell *matHeaderCellDef>Start Point</th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header (click)="sort('StartPointId')">Start Point</th>
           <td mat-cell *matCellDef="let item">{{ getStartPoint(item?.StartPointId) }}</td>
         </ng-container>
         <ng-container matColumnDef="City">
-          <th mat-header-cell *matHeaderCellDef>City</th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header (click)="sort('CityName')">City</th>
           <td mat-cell *matCellDef="let item">{{ item.City?.CityName }}</td>
         </ng-container>
         <ng-container matColumnDef="Time">
-          <th mat-header-cell *matHeaderCellDef>Time</th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header (click)="sort('Time')">Time</th>
           <td mat-cell *matCellDef="let item">{{ item.Time }}</td>
         </ng-container>
         <ng-container matColumnDef="Date">
-          <th mat-header-cell *matHeaderCellDef>Date</th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header (click)="sort('Date')">Date</th>
           <td mat-cell *matCellDef="let item">{{ item.Date }}</td>
         </ng-container>
         <ng-container matColumnDef="edit">
-          <th mat-header-cell *matHeaderCellDef>Edit</th>
+          <th mat-header-cell *matHeaderCellDef >Edit</th>
           <td mat-cell  *matCellDef="let item">
             <button mat-button (click)="editTicket(item)" class="button-style">Edit</button></td>
         </ng-container>

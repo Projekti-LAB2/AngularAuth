@@ -1,7 +1,7 @@
 <div class="table-div">
     <mat-card>
       <div class="add-button-div">
-        <div>
+        <div class="filter-bar-div">
           <input matInput type="text" placeholder="Search" [(ngModel)]="searchText" (keyup)="filterCities()">
           <mat-select placeholder="Select column to filter by">
             <mat-option *ngFor="let option of options" [value]="option" (click)="changeValue(option)">

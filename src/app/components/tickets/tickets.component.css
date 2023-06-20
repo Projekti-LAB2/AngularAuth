@@ -29,3 +29,9 @@ mat-card {
     color: #fff;
     font-size: 10pt;
 }
+.filter-bar-div {
+    display: flex;
+}
+.filter-bar-div input {
+    margin-right: 15px;
+}

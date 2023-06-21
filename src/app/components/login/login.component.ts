@@ -37,10 +37,18 @@ export class LoginComponent implements OnInit {
         const jwtHelper = new JwtHelperService();
         const decodedToken = jwtHelper.decodeToken(res.token);
         console.log(decodedToken);
-        if(decodedToken && decodedToken.role === 'Admin'){
+        if (decodedToken && decodedToken.role === 'Admin') {
           this.router.navigate(['dashboard']);
-        }else {
-          // code here
+        } else {
+          const currentDomain = window.location.href;
+
+          if (currentDomain.includes('http://localhost:4200/login')) {
+            let newDomain = currentDomain.replace(
+              'http://localhost:4200/login',
+              'http://localhost:3000/'
+            );
+            window.location.replace(newDomain);
+          }
         }
       },(err) => {
         alert(err.error.message);

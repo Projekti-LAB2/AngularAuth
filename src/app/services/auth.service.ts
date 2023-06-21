@@ -9,7 +9,7 @@ import { BehaviorSubject } from 'rxjs';
 export class AuthService {
 
 
-  private baseUrl = 'http://localhost:5000/api/User/';
+  private baseUrl = 'http://localhost:7789/api/User/';
   constructor(private http: HttpClient, private router: Router) { }
 
   signUp(userObj:any) {

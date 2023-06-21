@@ -18,6 +18,7 @@ export class CreateOfferComponent {
     CityId: new FormControl(this.datav, [Validators.required, Validators.email]),
     OfferDescription: new FormControl(this.datav,[Validators.required, Validators.minLength(1)]),
     Price: new FormControl(``,[Validators.required]),
+    Image: new FormControl(this.datav,[Validators.required]),
   })
 
   constructor(
@@ -34,6 +35,7 @@ export class CreateOfferComponent {
         CityId: this.data.offer.CityId.toString(),
         OfferDescription: this.data.offer.OfferDescription,
         Price: this.data.offer.Price.toString(),
+        Image: this.data.offer.Image,
       })
     }
   }
@@ -56,5 +58,24 @@ export class CreateOfferComponent {
       return this.formGroup.controls['CityId'].hasError(error);
     }
     return false;
+  }
+  onFileSelected(event:any) {
+    const file = event.target.files[0];
+  
+    if (file) {
+      const reader = new FileReader();
+  
+      reader.onload = () => {
+        // `reader.result` contains the base64 representation of the file
+        const base64Image = reader.result;
+        this.formGroup.controls['Image'].setValue(base64Image);
+        console.log(base64Image,'base64Image');
+        
+        // Do something with the base64Image, such as sending it to an API or displaying it on the page
+        console.log(base64Image);
+      };
+  
+      reader.readAsDataURL(file);
+    }
   }
 }
